@@ -5,16 +5,15 @@ defmodule DealerClientWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", DealerClientWeb do
+  scope "/" do
     pipe_through :api
+
+    forward "/graphql", Absinthe.Plug,
+      schema: DealerClientWeb.Schema
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: DealerClientWeb.Schema,
+      interface: :simple
   end
 
-  forward "/graphql",
-          Absinthe.Plug,
-          schema: DealerClientWeb.Schema
-
-  forward "/graphiql",
-          Absinthe.Plug.GraphiQL,
-          schema: DealerClientWeb.Schema,
-          interface: :simple
 end
