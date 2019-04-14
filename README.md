@@ -3,6 +3,7 @@
 Client/GraphQL gateway to DealearBase SOAP API
 http://api.dealerbase.co.nz/
 
+Requires dealer specific token.
 Some information about the service can be found [here](http://developers.dealerbase.co.nz/WebService/Default.aspx).
 
 Elixir/Phoenix/Absinthe
