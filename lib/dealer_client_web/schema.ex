@@ -10,5 +10,11 @@ defmodule DealerClientWeb.Schema do
       arg :id, non_null(:id)
       resolve &Resolvers.Vehicles.find_vehicle/3
     end
+
+    @desc "List of all vehicles"
+    field :vehicles, list_of(:vehicle) do
+      arg :page_size, :integer
+      resolve &Resolvers.Vehicles.list_all/3
+    end
   end
 end
