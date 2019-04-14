@@ -19,7 +19,7 @@ defmodule DealerClient.Mixfile do
   def application do
     [
       mod: {DealerClient.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :soap]
     ]
   end
 
@@ -39,6 +39,7 @@ defmodule DealerClient.Mixfile do
       {:plug_cowboy, "~> 1.0"},
       {:absinthe_plug, "~> 1.4"},
       {:poison, "~> 2.2.0"},
+      {:soap, "~> 1.0"},
     ]
   end
 end
