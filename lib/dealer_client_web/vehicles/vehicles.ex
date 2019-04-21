@@ -1,6 +1,9 @@
 defmodule DealerClientWeb.Vehicles do
   import Soap
 
+  @wsdl_url Application.get_env(:dealer_client, DealerClientWeb.Endpoint)[:wsdl_url]
+  @ticket Application.get_env(:dealer_client, DealerClientWeb.Endpoint)[:ticket]
+
   # Stubbed out for now.
   def find_vehicle(id) do
     %{
@@ -15,15 +18,13 @@ defmodule DealerClientWeb.Vehicles do
       ManufacturerNameLike: "BMW" # for quick and min result
     }}
 
-    wsdl_path="http://api.dealerbase.co.nz/ServiceVehicleSelect.asmx?WSDL"
-
-    wsdl_path
+    @wsdl_url
     |> init_model(:url)
     |> elem(1)
     |> call(
          "GetVehicleCollection",
          {
-           %{Ticket: "137F45B154E3466D8CE52B93387ADB3B7B626C25A1D0496E86C3A9D34263C368"},
+           %{Ticket: @ticket},
            params
          }
        )
